@@ -62,11 +62,19 @@ int main() {
 
 /* -------------------------------------------- */
 
-/* lambdas that have more than one return statement, or if a type conversion is needed */
+/* lambdas that define return type because of having more than one return statement, or if a type conversion is needed */
 // int main()
 // {
 //     std::cout << "this lambda returns: "
-//               << [](int x, int y) -> int { if (x > 5) { return x + y * .2; } else if (y < 2) { return x - y *.2; } else { return x * y *.2; } }(4, 3) << std::endl;
+//               << [](int x, int y) -> int { 
+//                   if (x > 5) 
+//                      { return x + y * .2; } 
+//                   else if  (y < 2) 
+//                       { return x - y *.2; } 
+//                   else
+//                    { return x * y *.2; } 
+//                    }
+//                    (4, 3) << std::endl;
 
 //     std::cout << "this lambda returns: "
 //               << [](int x, int y) -> float { if (x > 5) { return x + y * .21f; } else if (y < 2) { return x - y *.21f; } else { return x * y *.21f; } }(4, 3) << std::endl;
@@ -86,25 +94,7 @@ int main() {
 // {
 //     double x = 15.55f;
 //     double y = 12.12f;
-//     [x, y]() {
-//         int i = 7;
-//         std::cout << "x=" << x << " y=" << y << " i=" << i << std::endl;
-//     }();
-//     return 0;
-// }
-
-/* -------------------------------------------- */
-
-/* variable captures are a copy of the original, not a reference */
-// int main() {
-//     int x = 42;
-//     auto func1 = [x](){ std::cout << "The value of x inside the lambda is: " << x << std::endl; };
-//     func1();
-//     for (int i = 0; i < 3; i++) {
-//         x++;
-//         func1();
-//     }
-//     std::cout << "but the value of x outside our lambda is now: " << x << std::endl;
+//     [x, y]() { int i = 7; std::cout << "x=" << x << " y=" << y << " i=" << i << std::endl; }();
 //     return 0;
 // }
 
@@ -163,7 +153,6 @@ int main() {
 // int main()
 // {
 //     int x = 42;
-
 //     for (int i = 0; i < 3; i++)
 //     {
 //         [&x]() {
@@ -257,11 +246,11 @@ int main() {
 
 // int main()
 // {
-//     Thing thing(5);
+//     Thing thing;
 //     for (int i = 0; i < 8; i++) {
 //         thing.addToIntList(i+3);
 //     }
-//     std::cout << "There are " << thing.get_how_many_higher_than_criteria() << " higher than 5" << std::endl;
+//     std::cout << "There are " << thing.get_how_many_higher_than_criteria() << " higher than 0" << std::endl;
 //     return 0;
 // }
 
